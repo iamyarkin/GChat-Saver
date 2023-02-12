@@ -7,7 +7,7 @@ from g_python.hparsers import HEntity
 
 extension_info = {
     "title": "G-ChatSaver",
-    "description": "Saves incoming chats",
+    "description": "Save your incoming chats and the rooms you visit",
     "version": "1.0",
     "author": "Yarkin"
 }
