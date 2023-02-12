@@ -34,12 +34,7 @@ def room_name(room):
     multi_use = packet.read_int()
     if enter_room:
         with open("chat.txt", "a", encoding="ISO-8859-9") as file:
-            file.write("------------------------------------------------------------------------------\n")
-            file.write(f"[  You Joined a room at: {date_str}  ]\n")
-            file.write("[Room Name : " + room_name + " ]\n")
-            file.write("[Room Owner : " + owner_name + " ]\n")
-            file.write("[Room Description : " + description + " ]\n")
-            file.write("------------------------------------------------------------------------------\n")
+            file.write("------------------------------------------------------------------------------\n[ You Joined a room at: " + date_str + " ]\n[Room Name : " + room_name + " ]\n[Room Owner : " + owner_name + " ]\n[Room Description : " + description + " ]\n------------------------------------------------------------------------------\n")
 
 def speech_in(msg):
     index, text, _, bubble, _, id = msg.packet.read('isiiii')
