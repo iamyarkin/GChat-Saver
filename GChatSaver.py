@@ -1,6 +1,6 @@
 import sys
 import datetime
-
+import os
 from g_python.gextension import Extension
 from g_python.hmessage import Direction
 from g_python.hparsers import HEntity
@@ -72,6 +72,13 @@ def speech_shout(msg):
     else:
         ext.write_to_console(f"Incoming shout from unknown user: {text}")
 
+def speech_out(message):
+    (text, color, index) = message.packet.read('sii')
+    if text.lower() == ':gchatsaver':
+        message.is_blocked = True
+        os.startfile('chat.txt', 'edit')
+
+ext.intercept(Direction.TO_SERVER, speech_out, 'Chat')
 ext.intercept(Direction.TO_CLIENT, add_users, 'Users')
 ext.intercept(Direction.TO_CLIENT, get_users, 'RoomReady')
 ext.intercept(Direction.TO_CLIENT, speech_in, 'Chat')
