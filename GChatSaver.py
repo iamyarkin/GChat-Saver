@@ -34,7 +34,7 @@ def room_name(room):
     multi_use = packet.read_int()
     if enter_room:
         with open("chat.txt", "a", encoding="ISO-8859-9") as file:
-            file.write("------------------------------------------------------------------------------\n[ You Joined a room at: " + date_str + " ]\n[Room Name : " + room_name + " ]\n[Room Owner : " + owner_name + " ]\n[Room Description : " + description + " ]\n------------------------------------------------------------------------------\n")
+            file.write("------------------------------------------------------------------------------\n[ You Joined a room at : " + date_str + " ]\n[ Room Name : " + room_name + " ]\n[ Room Owner : " + owner_name + " ]\n[ Room Description : " + description + " ]\n------------------------------------------------------------------------------\n")
 
 def speech_in(msg):
     index, text, _, bubble, _, id = msg.packet.read('isiiii')
@@ -74,9 +74,10 @@ def speech_shout(msg):
 
 def speech_out(message):
     (text, color, index) = message.packet.read('sii')
-    if text.lower() == ':gchatsaver':
+    if text.lower() == ':gchat':
         message.is_blocked = True
         os.startfile('chat.txt', 'edit')
+        ext.send_to_client('{in:Whisper}{i:-1}{s:"You have successfully opened the "chat.txt" file."}{i:0}{i:34}{i:0}{i:-1}')
 
 ext.intercept(Direction.TO_SERVER, speech_out, 'Chat')
 ext.intercept(Direction.TO_CLIENT, add_users, 'Users')
