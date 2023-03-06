@@ -5,3 +5,4 @@ GChatSaver is an extension for saving all user chats and room information
 - Saves Room infos (room name, room owner, room title)
 - Saves chat logs in G-Earth folder in a txt file
 - You can easily access your chat log by typing :gchat
+- You can see all the filtering options by typing :gchatfilters which will show you a list on how to add, remove or clean filters.
